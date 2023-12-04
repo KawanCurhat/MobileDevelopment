@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "57943775711",
+    "project_id": "axial-chemist-397916",
+    "storage_bucket": "axial-chemist-397916.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57943775711:android:f305beb49eaa6a38cbcc6a",
+        "android_client_info": {
+          "package_name": "com.kcai.kawancurhat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57943775711-8cl66dafofi8166lbj8ns16jk6naa27p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kcai.kawancurhat",
+            "certificate_hash": "960e1f0b487ff0f91309792044c1e56778bf2948"
+          }
+        },
+        {
+          "client_id": "57943775711-f49li9teen2jng47s8le8rsq3fltamrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyjFNFXxYiuyaQBINNmYg3RpGnkg7OdrA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57943775711-f49li9teen2jng47s8le8rsq3fltamrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
