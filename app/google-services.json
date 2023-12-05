@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "57943775711-8cl66dafofi8166lbj8ns16jk6naa27p.apps.googleusercontent.com",
+          "client_id": "57943775711-6mp356isftd4l58vo8ao5hcima5ta3hm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.kcai.kawancurhat",
-            "certificate_hash": "960e1f0b487ff0f91309792044c1e56778bf2948"
+            "certificate_hash": "2a7a15a5c9a986f600b9e2b0a9e78da8c0c46546"
           }
         },
         {
