@@ -20,7 +20,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.auth.api.identity.Identity
-import com.kcai.kawancurhat.presentation.sign_in.GoogleAuthUIClient
+import com.kcai.kawancurhat.presentation.home_page.HomePage
+import com.kcai.kawancurhat.presentation.sign_in.GoogleAuthUiClient
 import com.kcai.kawancurhat.presentation.sign_in.SignInScreen
 import com.kcai.kawancurhat.presentation.sign_in.SignInViewModel
 import com.kcai.kawancurhat.ui.theme.KawanCurhatTheme
@@ -29,7 +30,7 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
 
     private val googleAuthUiClient by lazy {
-        GoogleAuthUIClient(
+        GoogleAuthUiClient(
             context = applicationContext,
             oneTapClient = Identity.getSignInClient(applicationContext)
         )
@@ -49,6 +50,12 @@ class MainActivity : ComponentActivity() {
                         composable("sign_in") {
                             val viewModel = viewModel<SignInViewModel>()
                             val state by viewModel.state.collectAsStateWithLifecycle()
+
+                            LaunchedEffect(key1 = Unit) {
+                                if (googleAuthUiClient.getSignedInUser() != null) {
+                                    navController.navigate("home")
+                                }
+                            }
 
                             val launcher = rememberLauncherForActivityResult(
                                 contract = ActivityResultContracts.StartIntentSenderForResult(),
@@ -71,6 +78,9 @@ class MainActivity : ComponentActivity() {
                                         "Sign in successful",
                                         Toast.LENGTH_LONG
                                     ).show()
+
+                                    navController.navigate("home")
+                                    viewModel.resetState()
                                 }
                             }
 
@@ -78,12 +88,29 @@ class MainActivity : ComponentActivity() {
                                 state = state,
                                 onSignInClick = {
                                     lifecycleScope.launch {
+                                        googleAuthUiClient.signOut()
                                         val signInIntentSender = googleAuthUiClient.signIn()
                                         launcher.launch(
                                             IntentSenderRequest.Builder(
                                                 signInIntentSender ?: return@launch
                                             ).build()
                                         )
+                                    }
+                                }
+                            )
+                        }
+
+                        composable("home") {
+                            HomePage(
+                                userData = googleAuthUiClient.getSignedInUser(),
+                                onSignOut = {
+                                    lifecycleScope.launch {
+                                        googleAuthUiClient.signOut()
+                                        Toast.makeText(
+                                            applicationContext,
+                                            "Signed Out",
+                                            Toast.LENGTH_LONG
+                                        ).show()
                                     }
                                 }
                             )
