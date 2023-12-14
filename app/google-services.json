@@ -7,35 +7,35 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:57943775711:android:f305beb49eaa6a38cbcc6a",
+        "mobilesdk_app_id": "1:57943775711:android:254a12b47c19706dcbcc6a",
         "android_client_info": {
-          "package_name": "com.kcai.kawancurhat"
+          "package_name": "com.kc.kawancurhat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "57943775711-6mp356isftd4l58vo8ao5hcima5ta3hm.apps.googleusercontent.com",
+          "client_id": "57943775711-j60nrgabfc5gt7hur3d9ng0v3p1o3ra7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.kcai.kawancurhat",
+            "package_name": "com.kc.kawancurhat",
             "certificate_hash": "2a7a15a5c9a986f600b9e2b0a9e78da8c0c46546"
           }
         },
         {
-          "client_id": "57943775711-f49li9teen2jng47s8le8rsq3fltamrq.apps.googleusercontent.com",
+          "client_id": "57943775711-6tr4unu9261hvf6d2dmgblba3fndajp9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDyjFNFXxYiuyaQBINNmYg3RpGnkg7OdrA"
+          "current_key": "AIzaSyCv5mU7V7sgpfPCwCQt1qpSdLOXfcZHX0Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "57943775711-f49li9teen2jng47s8le8rsq3fltamrq.apps.googleusercontent.com",
+              "client_id": "57943775711-6tr4unu9261hvf6d2dmgblba3fndajp9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

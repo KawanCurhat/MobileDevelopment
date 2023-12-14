@@ -1,4 +1,4 @@
-package com.kcai.kawancurhat.ui.theme
+package com.kc.kawancurhat.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

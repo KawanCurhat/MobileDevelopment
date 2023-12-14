@@ -1,8 +1,9 @@
-package com.kcai.kawancurhat.presentation.sign_in
+package com.kc.kawancurhat.presentation.sign_in
 
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
+import android.widget.Toast
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.BeginSignInRequest.GoogleIdTokenRequestOptions
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -10,9 +11,9 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.kcai.kawancurhat.R
-import kotlinx.coroutines.CancellationException
+import com.kc.kawancurhat.R
 import kotlinx.coroutines.tasks.await
+import kotlin.coroutines.cancellation.CancellationException
 
 class GoogleAuthUiClient(
     private val context: Context,
@@ -27,7 +28,11 @@ class GoogleAuthUiClient(
             ).await()
         } catch (e: Exception) {
             e.printStackTrace()
-            if (e is CancellationException) throw e
+            Toast.makeText(
+                context,
+                e.message,
+                Toast.LENGTH_LONG
+            ).show()
             null
         }
         return result?.pendingIntent?.intentSender

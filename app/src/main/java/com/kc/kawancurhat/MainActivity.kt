@@ -1,4 +1,4 @@
-package com.kcai.kawancurhat
+package com.kc.kawancurhat
 
 import android.os.Bundle
 import android.widget.Toast
@@ -20,11 +20,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.auth.api.identity.Identity
-import com.kcai.kawancurhat.presentation.home_page.HomePage
-import com.kcai.kawancurhat.presentation.sign_in.GoogleAuthUiClient
-import com.kcai.kawancurhat.presentation.sign_in.SignInScreen
-import com.kcai.kawancurhat.presentation.sign_in.SignInViewModel
-import com.kcai.kawancurhat.ui.theme.KawanCurhatTheme
+import com.kc.kawancurhat.presentation.home_page.HomePage
+import com.kc.kawancurhat.presentation.sign_in.GoogleAuthUiClient
+import com.kc.kawancurhat.presentation.sign_in.SignInScreen
+import com.kc.kawancurhat.presentation.sign_in.SignInViewModel
+import com.kc.kawancurhat.ui.theme.KawanCurhatTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -88,7 +88,6 @@ class MainActivity : ComponentActivity() {
                                 state = state,
                                 onSignInClick = {
                                     lifecycleScope.launch {
-                                        googleAuthUiClient.signOut()
                                         val signInIntentSender = googleAuthUiClient.signIn()
                                         launcher.launch(
                                             IntentSenderRequest.Builder(

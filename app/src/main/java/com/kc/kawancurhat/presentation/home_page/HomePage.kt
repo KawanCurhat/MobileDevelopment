@@ -1,4 +1,4 @@
-package com.kcai.kawancurhat.presentation.home_page
+package com.kc.kawancurhat.presentation.home_page
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.kcai.kawancurhat.presentation.sign_in.UserData
+import com.kc.kawancurhat.presentation.sign_in.UserData
 
 @Composable
 fun HomePage(

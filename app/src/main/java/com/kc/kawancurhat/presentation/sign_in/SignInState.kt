@@ -1,4 +1,4 @@
-package com.kcai.kawancurhat.presentation.sign_in
+package com.kc.kawancurhat.presentation.sign_in
 
 data class SignInState (
     val isSignInSuccessful: Boolean = false,

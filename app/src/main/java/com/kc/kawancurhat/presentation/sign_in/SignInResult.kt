@@ -1,4 +1,4 @@
-package com.kcai.kawancurhat.presentation.sign_in
+package com.kc.kawancurhat.presentation.sign_in
 
 data class SignInResult(
     val data: UserData?,
