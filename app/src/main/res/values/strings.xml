@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">KawanCurhat</string>
     <string name="web_client_id">57943775711-6tr4unu9261hvf6d2dmgblba3fndajp9.apps.googleusercontent.com</string>
+    <string name="welcome_image_desc">Welcome Image</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="continue_with_google">Continue with Google</string>
 </resources>

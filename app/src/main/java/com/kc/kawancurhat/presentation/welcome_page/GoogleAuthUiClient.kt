@@ -1,4 +1,4 @@
-package com.kc.kawancurhat.presentation.sign_in
+package com.kc.kawancurhat.presentation.welcome_page
 
 import android.content.Context
 import android.content.Intent

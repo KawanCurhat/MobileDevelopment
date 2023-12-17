@@ -19,12 +19,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.kc.kawancurhat.presentation.sign_in.UserData
+import com.kc.kawancurhat.presentation.welcome_page.UserData
 
 @Composable
 fun HomePage(
     userData: UserData?,
-    onSignOut: () -> Unit
+    onSignOut: () -> Unit,
+    openMap: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -53,6 +54,9 @@ fun HomePage(
         }
         Button(onClick = onSignOut) {
             Text(text = "Sign Out")
+        }
+        Button(onClick = openMap) {
+            Text(text = "Open Map")
         }
     }
 }
