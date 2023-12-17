@@ -39,6 +39,6 @@ TBA
 
 ## Other Repo
 ### Cloud Computing
--To Be Added-
+[KawanCurhat Cloud Computing](https://github.com/KawanCurhat/CloudComputing)
 ### Machine Learning:
 [KawanCurhat Machine Learning](https://github.com/KawanCurhat/MachineLearning)
