@@ -1,4 +1,4 @@
-package com.kcai.kawancurhat
+package com.kc.kawancurhat
 
 import org.junit.Test
 

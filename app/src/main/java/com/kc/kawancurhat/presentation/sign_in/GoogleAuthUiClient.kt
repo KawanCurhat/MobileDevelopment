@@ -1,19 +1,21 @@
-package com.kcai.kawancurhat.presentation.sign_in
+package com.kc.kawancurhat.presentation.sign_in
 
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
+import android.widget.Toast
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.BeginSignInRequest.GoogleIdTokenRequestOptions
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.GoogleAuthProvider
+
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.kcai.kawancurhat.R
+import com.kc.kawancurhat.R
 import kotlinx.coroutines.tasks.await
-import java.util.concurrent.CancellationException
+import kotlin.coroutines.cancellation.CancellationException
 
-class GoogleAuthUIClient(
+class GoogleAuthUiClient(
     private val context: Context,
     private val oneTapClient: SignInClient
 ) {
@@ -26,7 +28,11 @@ class GoogleAuthUIClient(
             ).await()
         } catch (e: Exception) {
             e.printStackTrace()
-            if (e is CancellationException) throw e
+            Toast.makeText(
+                context,
+                e.message,
+                Toast.LENGTH_LONG
+            ).show()
             null
         }
         return result?.pendingIntent?.intentSender
@@ -43,7 +49,7 @@ class GoogleAuthUIClient(
                     UserData(
                         userId = uid,
                         username = displayName,
-                        profilePicUrl = photoUrl?.toString()
+                        profilePictureUrl = photoUrl?.toString()
                     )
                 },
                 errorMessage = null
@@ -62,10 +68,9 @@ class GoogleAuthUIClient(
         try {
             oneTapClient.signOut().await()
             auth.signOut()
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
-            if(e is CancellationException) throw e
-
+            if (e is CancellationException) throw e
         }
     }
 
@@ -73,7 +78,7 @@ class GoogleAuthUIClient(
         UserData(
             userId = uid,
             username = displayName,
-            profilePicUrl = photoUrl?.toString()
+            profilePictureUrl = photoUrl?.toString()
         )
     }
 

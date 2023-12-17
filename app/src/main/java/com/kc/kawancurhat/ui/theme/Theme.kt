@@ -1,4 +1,4 @@
-package com.kcai.kawancurhat.ui.theme
+package com.kc.kawancurhat.ui.theme
 
 import android.app.Activity
 import android.os.Build

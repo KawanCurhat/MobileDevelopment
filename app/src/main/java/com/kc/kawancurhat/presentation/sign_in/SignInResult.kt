@@ -1,4 +1,4 @@
-package com.kcai.kawancurhat.presentation.sign_in
+package com.kc.kawancurhat.presentation.sign_in
 
 data class SignInResult(
     val data: UserData?,
@@ -8,5 +8,5 @@ data class SignInResult(
 data class UserData(
     val userId: String,
     val username: String?,
-    val profilePicUrl: String?
+    val profilePictureUrl: String?
 )
