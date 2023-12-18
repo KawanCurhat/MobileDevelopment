@@ -64,7 +64,7 @@ fun MenuItem(
             ),
             modifier = Modifier
                 .height(62.dp)
-                .width(145.dp),
+                .width(152.dp),
         ) {
             Icon(
                 painter = painterResource(menu.imageMenu),

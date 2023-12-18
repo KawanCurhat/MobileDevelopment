@@ -60,9 +60,10 @@ fun QuotesBox(
                 fontSize = 14.sp,
                 fontFamily = fontPoppinsReguler,
                 color = Color(0xFF707070),
-                textAlign = TextAlign.Start
             ),
-            modifier = Modifier.padding(start = 8.dp, top = 8.dp, bottom = 32.dp, end = 16.dp)
+            modifier = Modifier
+                .padding(start = 8.dp, top = 16.dp, bottom = 16.dp, end = 16.dp)
+                .align(Alignment.CenterStart)
         )
     }
 }

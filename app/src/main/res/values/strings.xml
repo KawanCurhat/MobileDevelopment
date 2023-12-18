@@ -13,4 +13,9 @@
     <string name="sad_mood">Sad</string>
     <string name="journal_txt">Journal</string>
     <string name="article_txt">Article</string>
+    <string name="language_settings">Language</string>
+    <string name="theme_settings">Theme</string>
+    <string name="contact_us_btn">Contact Us</string>
+    <string name="privacy_policy_btn">Privacy Policy</string>
+    <string name="log_out">Log Out</string>
 </resources>

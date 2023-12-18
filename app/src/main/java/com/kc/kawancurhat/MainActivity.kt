@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            KawanCurhatTheme {
+            KawanCurhatTheme() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -106,17 +106,7 @@ class MainActivity : ComponentActivity() {
                         composable("home") {
                             HomePage(
                                 userData = googleAuthUiClient.getSignedInUser(),
-//                                onSignOut = {
-//                                    lifecycleScope.launch {
-//                                        googleAuthUiClient.signOut()
-//                                        Toast.makeText(
-//                                            applicationContext,
-//                                            "Signed Out",
-//                                            Toast.LENGTH_LONG
-//                                        ).show()
-//                                        onBackPressedDispatcher.onBackPressed()
-//                                    }
-//                                },
+                                googleAuthUiClient = googleAuthUiClient,
                                 onOpenMap = {
                                     lifecycleScope.launch {
                                         Toast.makeText(
