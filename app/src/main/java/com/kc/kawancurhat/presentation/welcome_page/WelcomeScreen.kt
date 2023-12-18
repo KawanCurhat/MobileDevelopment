@@ -2,13 +2,17 @@ package com.kc.kawancurhat.presentation.welcome_page
 
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,8 +30,10 @@ import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.googlefonts.GoogleFont
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.kc.kawancurhat.R
+import com.kc.kawancurhat.ui.theme.Blue
 import com.kc.kawancurhat.ui.theme.KawanCurhatTheme
 
 val provider = GoogleFont.Provider(
@@ -96,9 +102,22 @@ fun SignInScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedButton(
-            onClick = onSignInClick
+            onClick = onSignInClick,
+            modifier = Modifier.padding(32.dp),
+            border = BorderStroke(1.dp, Blue)
         ) {
-            Text(text = stringResource(R.string.continue_with_google))
+            Icon(
+                painter = painterResource(R.drawable.icon_google),
+                contentDescription = "Google Icon",
+                tint = Color.Unspecified
+            )
+            Text(
+                text = stringResource(R.string.continue_with_google),
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .weight(1f)
+                    .offset(x = (-24).dp /2)
+            )
         }
     }
 }

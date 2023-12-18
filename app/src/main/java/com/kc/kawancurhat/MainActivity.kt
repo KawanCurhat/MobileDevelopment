@@ -113,7 +113,7 @@ class MainActivity : ComponentActivity() {
                                         onBackPressedDispatcher.onBackPressed()
                                     }
                                 },
-                                openMap = {
+                                onOpenMap = {
                                     lifecycleScope.launch {
                                         Toast.makeText(
                                             application,
