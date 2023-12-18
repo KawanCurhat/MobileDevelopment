@@ -53,7 +53,9 @@ class MainActivity : ComponentActivity() {
 
                             LaunchedEffect(key1 = Unit) {
                                 if (googleAuthUiClient.getSignedInUser() != null) {
-                                    navController.navigate("home")
+                                    navController.navigate("home") {
+                                        navController.popBackStack()
+                                    }
                                 }
                             }
 
@@ -79,7 +81,9 @@ class MainActivity : ComponentActivity() {
                                         Toast.LENGTH_LONG
                                     ).show()
 
-                                    navController.navigate("home")
+                                    navController.navigate("home") {
+                                        navController.popBackStack()
+                                    }
                                     viewModel.resetState()
                                 }
                             }
@@ -102,17 +106,17 @@ class MainActivity : ComponentActivity() {
                         composable("home") {
                             HomePage(
                                 userData = googleAuthUiClient.getSignedInUser(),
-                                onSignOut = {
-                                    lifecycleScope.launch {
-                                        googleAuthUiClient.signOut()
-                                        Toast.makeText(
-                                            applicationContext,
-                                            "Signed Out",
-                                            Toast.LENGTH_LONG
-                                        ).show()
-                                        onBackPressedDispatcher.onBackPressed()
-                                    }
-                                },
+//                                onSignOut = {
+//                                    lifecycleScope.launch {
+//                                        googleAuthUiClient.signOut()
+//                                        Toast.makeText(
+//                                            applicationContext,
+//                                            "Signed Out",
+//                                            Toast.LENGTH_LONG
+//                                        ).show()
+//                                        onBackPressedDispatcher.onBackPressed()
+//                                    }
+//                                },
                                 onOpenMap = {
                                     lifecycleScope.launch {
                                         Toast.makeText(
