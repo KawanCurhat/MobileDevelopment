@@ -21,9 +21,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.auth.api.identity.Identity
 import com.kc.kawancurhat.presentation.home_page.HomePage
-import com.kc.kawancurhat.presentation.sign_in.GoogleAuthUiClient
-import com.kc.kawancurhat.presentation.sign_in.SignInScreen
-import com.kc.kawancurhat.presentation.sign_in.SignInViewModel
+import com.kc.kawancurhat.presentation.welcome_page.GoogleAuthUiClient
+import com.kc.kawancurhat.presentation.welcome_page.SignInScreen
+import com.kc.kawancurhat.presentation.welcome_page.SignInViewModel
 import com.kc.kawancurhat.ui.theme.KawanCurhatTheme
 import kotlinx.coroutines.launch
 
@@ -108,6 +108,16 @@ class MainActivity : ComponentActivity() {
                                         Toast.makeText(
                                             applicationContext,
                                             "Signed Out",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        onBackPressedDispatcher.onBackPressed()
+                                    }
+                                },
+                                onOpenMap = {
+                                    lifecycleScope.launch {
+                                        Toast.makeText(
+                                            application,
+                                            "Not yet",
                                             Toast.LENGTH_LONG
                                         ).show()
                                     }

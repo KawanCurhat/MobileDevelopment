@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">KawanCurhat</string>
     <string name="web_client_id">57943775711-6tr4unu9261hvf6d2dmgblba3fndajp9.apps.googleusercontent.com</string>
+    <string name="welcome_image_desc">Welcome Image</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="how_are_you_feeling_today">\nHow are you feeling today?</string>
+    <string name="hello_welcome_page">"Hello, "</string>
+    <string name="medication_icon">Medication Icon</string>
+    <string name="mood_happy">Happy</string>
+    <string name="calm_mood">Calm</string>
+    <string name="angry_mood">Angry</string>
+    <string name="sad_mood">Sad</string>
+    <string name="journal_txt">Journal</string>
+    <string name="article_txt">Article</string>
 </resources>
