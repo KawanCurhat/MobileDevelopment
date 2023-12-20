@@ -19,6 +19,7 @@ import androidx.navigation.NavController
 import com.kc.kawancurhat.R
 import com.kc.kawancurhat.ui.navigation.BottomBar
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatBot(
     navController: NavController
