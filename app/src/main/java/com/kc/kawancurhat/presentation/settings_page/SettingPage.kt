@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -63,7 +63,7 @@ fun SettingPage(
                     },
                     navigationIcon = {
                         IconButton(onClick = { onBackPressed() }) {
-                            Icon(Icons.Filled.ArrowBack, "Back Icon")
+                            Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back Icon")
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
@@ -92,12 +92,16 @@ fun SettingPage(
                     Spacer(modifier = Modifier.height(8.dp))
                     if (userData?.username != null) {
                         Text(
-                            text = userData.username, textAlign = TextAlign.Center, fontSize = 22.sp
+                            text = userData.username,
+                            textAlign = TextAlign.Center,
+                            fontSize = 22.sp
                         )
                     }
                     if (userData?.email != null) {
                         Text(
-                            text = userData.email, textAlign = TextAlign.Center, fontSize = 18.sp
+                            text = userData.email,
+                            textAlign = TextAlign.Center,
+                            fontSize = 18.sp
                         )
                     }
                     Spacer(modifier = Modifier.height(16.dp))
@@ -142,11 +146,15 @@ fun SettingPage(
         }
 
         composable("lang_set") {
-            LanguageSettings()
+            LanguageSettings(onBackPressed = {
+                navController.navigateUp()
+            })
         }
 
         composable("theme_set") {
-            ThemeSettings()
+            ThemeSettings(onBackPressed = {
+                navController.navigateUp()
+            })
         }
 
         composable("contact_page") {

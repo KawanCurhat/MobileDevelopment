@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kc.kawancurhat.R
-import com.kc.kawancurhat.model.Mood
+import com.kc.kawancurhat.presentation.home_page.Mood
 import com.kc.kawancurhat.ui.theme.KawanCurhatTheme
 
 @Composable

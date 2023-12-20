@@ -1,4 +1,4 @@
-package com.kc.kawancurhat.model
+package com.kc.kawancurhat.presentation.home_page
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

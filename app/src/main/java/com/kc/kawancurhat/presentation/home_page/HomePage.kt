@@ -1,6 +1,5 @@
 package com.kc.kawancurhat.presentation.home_page
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -21,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -39,16 +37,17 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.kc.kawancurhat.R
-import com.kc.kawancurhat.model.dummyMenu
-import com.kc.kawancurhat.model.dummyMood
-import com.kc.kawancurhat.presentation.home_page.components.BottomBar
+import com.kc.kawancurhat.presentation.article.ArticlePage
+import com.kc.kawancurhat.presentation.chatbot.ChatBot
 import com.kc.kawancurhat.presentation.home_page.components.MenuItem
 import com.kc.kawancurhat.presentation.home_page.components.MoodItem
 import com.kc.kawancurhat.presentation.home_page.components.MsgBox
 import com.kc.kawancurhat.presentation.home_page.components.QuotesBox
+import com.kc.kawancurhat.presentation.journaling.JournalingPage
 import com.kc.kawancurhat.presentation.settings_page.SettingPage
 import com.kc.kawancurhat.presentation.welcome_page.GoogleAuthUiClient
 import com.kc.kawancurhat.presentation.welcome_page.UserData
+import com.kc.kawancurhat.ui.navigation.BottomBar
 
 val provider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
@@ -59,9 +58,7 @@ val provider = GoogleFont.Provider(
 val fontInter = GoogleFont("Inter")
 val fontInterFamily = FontFamily(
     Font(
-        googleFont = fontInter,
-        fontProvider = provider,
-        weight = FontWeight.Normal
+        googleFont = fontInter, fontProvider = provider, weight = FontWeight.Normal
     )
 )
 
@@ -69,14 +66,15 @@ val fontInterFamily = FontFamily(
 fun HomePage(
     userData: UserData?,
     googleAuthUiClient: GoogleAuthUiClient,
-    onOpenMap: () -> Unit
 ) {
-    val context = LocalContext.current
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") {
+
+    NavHost(navController = navController, startDestination = "Home") {
+        composable("Home") {
             Scaffold(
-                bottomBar = { BottomBar() },
+                bottomBar = {
+                    BottomBar(navController)
+                },
             ) {
                 Column(
                     modifier = Modifier
@@ -88,8 +86,7 @@ fun HomePage(
                         IconButton(
                             onClick = {
                                 navController.navigate("settings")
-                            },
-                            modifier = Modifier.align(Alignment.End)
+                            }, modifier = Modifier.align(Alignment.End)
                         ) {
                             AsyncImage(
                                 model = userData.profilePictureUrl,
@@ -115,24 +112,21 @@ fun HomePage(
                                     ) {
                                         append(
                                             userData.username.substring(
-                                                0,
-                                                userData.username.indexOf(" ")
+                                                0, userData.username.indexOf(" ")
                                             )
                                         )
                                     }
                                     append("!")
                                     withStyle(
                                         style = SpanStyle(
-                                            fontSize = 18.sp,
-                                            fontFamily = fontInterFamily
+                                            fontSize = 18.sp, fontFamily = fontInterFamily
                                         )
                                     ) {
                                         append(stringResource(R.string.how_are_you_feeling_today))
                                     }
                                 },
                                 style = TextStyle(
-                                    fontSize = 24.sp,
-                                    textAlign = TextAlign.Start
+                                    fontSize = 24.sp, textAlign = TextAlign.Start
                                 ),
                             )
 
@@ -152,25 +146,13 @@ fun HomePage(
 
                             MsgBox(
                                 onChatClick = {
-                                    Toast.makeText(
-                                        context,
-                                        "Not yet",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                },
-                                modifier = Modifier.fillMaxWidth()
+                                    navController.navigate("chat")
+                                }, modifier = Modifier.fillMaxWidth()
                             )
 
                             Spacer(modifier = Modifier.height(16.dp))
 
-                            LazyRow(
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                items(dummyMenu, key = { it.textMenu }) { menu ->
-                                    MenuItem(menu)
-                                }
-                            }
+                            MenuItem(navController = navController)
 
                             Spacer(modifier = Modifier.height(16.dp))
 
@@ -182,13 +164,31 @@ fun HomePage(
             }
         }
 
-        composable("settings") {
-            SettingPage(
-                userData = userData,
+        composable("Journal") {
+            JournalingPage(onBackPressed = {
+                navController.navigateUp()
+            })
+        }
+
+        composable("Article") {
+            ArticlePage(onBackPressed = {
+                navController.navigateUp()
+            })
+        }
+
+        composable("Chat"){
+            ChatBot(
                 onBackPressed = {
                     navController.navigateUp()
-                },
-                googleAuthUiClient = googleAuthUiClient
+                }
+            )
+        }
+
+        composable("Settings") {
+            SettingPage(
+                userData = userData, onBackPressed = {
+                    navController.navigateUp()
+                }, googleAuthUiClient = googleAuthUiClient
             )
         }
     }

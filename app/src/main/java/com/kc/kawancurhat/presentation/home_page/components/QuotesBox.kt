@@ -16,12 +16,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.Font
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kc.kawancurhat.R
-import com.kc.kawancurhat.ui.theme.KawanCurhatTheme
 
 val fontPoppinsReguler = FontFamily(
     Font(
@@ -30,7 +27,6 @@ val fontPoppinsReguler = FontFamily(
         weight = FontWeight.Normal
     )
 )
-
 @Composable
 fun QuotesBox(
     modifier: Modifier = Modifier,
@@ -65,13 +61,5 @@ fun QuotesBox(
                 .padding(start = 8.dp, top = 16.dp, bottom = 16.dp, end = 16.dp)
                 .align(Alignment.CenterStart)
         )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun QuoteTest() {
-    KawanCurhatTheme {
-        QuotesBox()
     }
 }

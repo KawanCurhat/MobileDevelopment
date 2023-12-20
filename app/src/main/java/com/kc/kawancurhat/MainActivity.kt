@@ -107,15 +107,6 @@ class MainActivity : ComponentActivity() {
                             HomePage(
                                 userData = googleAuthUiClient.getSignedInUser(),
                                 googleAuthUiClient = googleAuthUiClient,
-                                onOpenMap = {
-                                    lifecycleScope.launch {
-                                        Toast.makeText(
-                                            application,
-                                            "Not yet",
-                                            Toast.LENGTH_LONG
-                                        ).show()
-                                    }
-                                }
                             )
                         }
                     }
