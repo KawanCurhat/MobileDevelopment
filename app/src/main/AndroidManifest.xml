@@ -14,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KawanCurhat"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyArR1TI82ofTvWn7lkeOBp_5eGt90-d6og" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

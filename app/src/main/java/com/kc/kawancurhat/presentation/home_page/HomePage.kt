@@ -39,6 +39,7 @@ import coil.compose.AsyncImage
 import com.kc.kawancurhat.R
 import com.kc.kawancurhat.presentation.article.ArticlePage
 import com.kc.kawancurhat.presentation.chatbot.ChatBot
+import com.kc.kawancurhat.presentation.gmap.MapPage
 import com.kc.kawancurhat.presentation.home_page.components.MenuItem
 import com.kc.kawancurhat.presentation.home_page.components.MoodItem
 import com.kc.kawancurhat.presentation.home_page.components.MsgBox
@@ -73,7 +74,7 @@ fun HomePage(
         composable("Home") {
             Scaffold(
                 bottomBar = {
-                    BottomBar(navController)
+                    BottomBar(navController, 0)
                 },
             ) {
                 Column(
@@ -146,7 +147,7 @@ fun HomePage(
 
                             MsgBox(
                                 onChatClick = {
-                                    navController.navigate("chat")
+                                    navController.navigate("Chat")
                                 }, modifier = Modifier.fillMaxWidth()
                             )
 
@@ -176,11 +177,15 @@ fun HomePage(
             })
         }
 
-        composable("Chat"){
+        composable("Chat") {
             ChatBot(
-                onBackPressed = {
-                    navController.navigateUp()
-                }
+                navController
+            )
+        }
+
+        composable("Map") {
+            MapPage(
+                navController
             )
         }
 

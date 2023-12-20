@@ -12,12 +12,11 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
 
 @Composable
-fun BottomBar(navController: NavController) {
+fun BottomBar(navController: NavController, currentPage: Int) {
     var selectedItemIndex by rememberSaveable {
-        mutableStateOf(0)
+        mutableStateOf(currentPage)
     }
     val items = NavigationItems.items
-
     NavigationBar {
         items.forEachIndexed{ index, item ->
             NavigationBarItem(

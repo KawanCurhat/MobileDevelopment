@@ -1,6 +1,4 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
-
-package com.kc.kawancurhat.presentation.chatbot
+package com.kc.kawancurhat.presentation.gmap
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,18 +14,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
+import com.google.maps.android.compose.rememberCameraPositionState
 import com.kc.kawancurhat.R
 import com.kc.kawancurhat.ui.navigation.BottomBar
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChatBot(
+fun MapPage(
     navController: NavController
 ) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(stringResource(R.string.chat_topbar))
+                    Text(stringResource(R.string.find_psychologist))
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
@@ -38,12 +43,25 @@ fun ChatBot(
             Column(
                 modifier = Modifier
                     .padding(it)
-                    .fillMaxSize()
             ) {
-
+                val singapore = LatLng(1.35, 103.87)
+                val cameraPositionState = rememberCameraPositionState {
+                    position = CameraPosition.fromLatLngZoom(singapore, 10f)
+                }
+                GoogleMap(
+                    modifier = Modifier.fillMaxSize(),
+                    cameraPositionState = cameraPositionState
+                ) {
+                    Marker(
+                        state = MarkerState(position = singapore),
+                        title = "Singapore",
+                        snippet = "Marker in Singapore"
+                    )
+                }
             }
-        }, bottomBar = {
-            BottomBar(navController = navController, currentPage = 1)
+        },
+        bottomBar = {
+            BottomBar(navController, 2)
         }
     )
 }

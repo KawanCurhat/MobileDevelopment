@@ -18,4 +18,6 @@
     <string name="contact_us_btn">Contact Us</string>
     <string name="privacy_policy_btn">Privacy Policy</string>
     <string name="log_out">Log Out</string>
+    <string name="find_psychologist">Find Psychologist</string>
+    <string name="chat_topbar">Chat</string>
 </resources>
