@@ -33,7 +33,7 @@ fun PrivacyPolicy(
     onBackPressed: () -> Unit
 ) {
     val navController = rememberNavController()
-    val pUrl = "https://raw.githubusercontent.com/KawanCurhat/CloudComputing/main/privacypolicy.html"
+    val pUrl = "https://kawancurhat.github.io/CloudComputing/privacypolicy.html"
     NavHost(navController = navController, startDestination = "privacy_policy") {
         composable("privacy_policy") {
             Scaffold(topBar = {
