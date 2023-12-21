@@ -58,7 +58,6 @@ class MainActivity : ComponentActivity() {
                     val client = AsyncHttpClient()
                     val url = "https://api.quotable.io/random?tags=Faith"
                     var quote by remember { mutableStateOf("") }
-                    var author by remember { mutableStateOf("") }
                     client.get(url, object : AsyncHttpResponseHandler() {
                         override fun onSuccess(
                             statusCode: Int,
@@ -70,7 +69,6 @@ class MainActivity : ComponentActivity() {
                             try {
                                 val responseObject = JSONObject(result)
                                 quote = responseObject.getString("content")
-                                author = responseObject.getString("author")
                             } catch (e: Exception) {
                                 Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
                                 e.printStackTrace()
@@ -155,8 +153,7 @@ class MainActivity : ComponentActivity() {
                             HomePage(
                                 userData = googleAuthUiClient.getSignedInUser(),
                                 googleAuthUiClient = googleAuthUiClient,
-                                quote = quote,
-                                author = author
+                                quote = quote
                             )
                         }
                     }

@@ -3,6 +3,7 @@ package com.kc.kawancurhat.presentation.home_page.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -34,7 +35,6 @@ val fontPoppinsReguler = FontFamily(
 fun QuotesBox(
     modifier: Modifier = Modifier,
     quote: String,
-    author: String
 ) {
     Box(
         modifier = modifier
@@ -55,29 +55,17 @@ fun QuotesBox(
                 .size(32.dp)
                 .align(Alignment.CenterEnd)
         )
-        Column {
-            Text(
-                text = "\"$quote\"",
-                style = TextStyle(
-                    fontSize = 14.sp,
-                    fontFamily = fontPoppinsReguler,
-                    color = Color(0xFF707070),
-                ),
-                fontStyle = FontStyle.Italic,
-                modifier = Modifier
-                    .padding(start = 8.dp, top = 16.dp, end = 16.dp)
-            )
-            Text(
-                text = "- $author",
-                style = TextStyle(
-                    fontSize = 14.sp,
-                    fontFamily = fontPoppinsReguler,
-                    color = Color(0xFF707070),
-                ),
-                modifier = Modifier
-                    .padding(start = 8.dp, top = 16.dp, bottom = 16.dp, end = 16.dp)
-            )
-        }
+        Text(
+            text = "\"$quote\"",
+            style = TextStyle(
+                fontSize = 14.sp,
+                fontFamily = fontPoppinsReguler,
+                color = Color(0xFF707070),
+            ),
+            fontStyle = FontStyle.Italic,
+            modifier = Modifier
+                .padding(start = 8.dp, top = 16.dp, bottom = 16.dp, end = 16.dp)
+        )
     }
 
 }

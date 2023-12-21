@@ -69,7 +69,6 @@ fun HomePage(
     userData: UserData?,
     googleAuthUiClient: GoogleAuthUiClient,
     quote: String,
-    author: String
 ) {
     val navController = rememberNavController()
     val context = LocalContext.current
@@ -160,10 +159,7 @@ fun HomePage(
 
                             Spacer(modifier = Modifier.height(16.dp))
 
-                            QuotesBox(
-                                quote = quote,
-                                author = author
-                            )
+                            QuotesBox(quote = quote)
 
                         }
                     }
