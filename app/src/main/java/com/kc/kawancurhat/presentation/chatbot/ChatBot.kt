@@ -14,6 +14,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.kc.kawancurhat.R
@@ -24,6 +25,7 @@ import com.kc.kawancurhat.ui.navigation.BottomBar
 fun ChatBot(
     navController: NavController
 ) {
+    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(
@@ -44,7 +46,7 @@ fun ChatBot(
 
             }
         }, bottomBar = {
-            BottomBar(navController = navController, currentPage = 1)
+            BottomBar(navController = navController, currentPage = 1, context)
         }
     )
 }

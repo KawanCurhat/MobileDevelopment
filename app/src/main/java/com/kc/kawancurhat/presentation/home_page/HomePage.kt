@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -67,14 +68,16 @@ val fontInterFamily = FontFamily(
 fun HomePage(
     userData: UserData?,
     googleAuthUiClient: GoogleAuthUiClient,
+    quote: String,
+    author: String
 ) {
     val navController = rememberNavController()
-
+    val context = LocalContext.current
     NavHost(navController = navController, startDestination = "Home") {
         composable("Home") {
             Scaffold(
                 bottomBar = {
-                    BottomBar(navController, 0)
+                    BottomBar(navController, 0, context)
                 },
             ) {
                 Column(
@@ -157,7 +160,10 @@ fun HomePage(
 
                             Spacer(modifier = Modifier.height(16.dp))
 
-                            QuotesBox()
+                            QuotesBox(
+                                quote = quote,
+                                author = author
+                            )
 
                         }
                     }

@@ -1,6 +1,8 @@
 package com.kc.kawancurhat
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -12,6 +14,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -25,7 +30,11 @@ import com.kc.kawancurhat.presentation.welcome_page.GoogleAuthUiClient
 import com.kc.kawancurhat.presentation.welcome_page.SignInScreen
 import com.kc.kawancurhat.presentation.welcome_page.SignInViewModel
 import com.kc.kawancurhat.ui.theme.KawanCurhatTheme
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
+import cz.msebera.android.httpclient.Header
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 class MainActivity : ComponentActivity() {
 
@@ -38,6 +47,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             KawanCurhatTheme() {
                 // A surface container using the 'background' color from the theme
@@ -45,6 +55,44 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val client = AsyncHttpClient()
+                    val url = "https://api.quotable.io/random?tags=Faith"
+                    var quote by remember { mutableStateOf("") }
+                    var author by remember { mutableStateOf("") }
+                    client.get(url, object : AsyncHttpResponseHandler() {
+                        override fun onSuccess(
+                            statusCode: Int,
+                            headers: Array<Header>,
+                            responseBody: ByteArray
+                        ) {
+                            val result = String(responseBody)
+                            Log.d(ContentValues.TAG, result)
+                            try {
+                                val responseObject = JSONObject(result)
+                                quote = responseObject.getString("content")
+                                author = responseObject.getString("author")
+                            } catch (e: Exception) {
+                                Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
+                                e.printStackTrace()
+                            }
+                        }
+
+                        override fun onFailure(
+                            statusCode: Int,
+                            headers: Array<Header>,
+                            responseBody: ByteArray,
+                            error: Throwable
+                        ) {
+                            val errorMessage = when (statusCode) {
+                                401 -> "$statusCode : Bad Request"
+                                403 -> "$statusCode : Forbidden"
+                                404 -> "$statusCode : Not Found"
+                                else -> "$statusCode : ${error.message}"
+                            }
+                            Toast.makeText(this@MainActivity, errorMessage, Toast.LENGTH_SHORT).show()
+                        }
+
+                    })
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "sign_in") {
                         composable("sign_in") {
@@ -107,6 +155,8 @@ class MainActivity : ComponentActivity() {
                             HomePage(
                                 userData = googleAuthUiClient.getSignedInUser(),
                                 googleAuthUiClient = googleAuthUiClient,
+                                quote = quote,
+                                author = author
                             )
                         }
                     }
