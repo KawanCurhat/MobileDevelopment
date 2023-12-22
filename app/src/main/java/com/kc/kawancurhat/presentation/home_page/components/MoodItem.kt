@@ -2,11 +2,14 @@ package com.kc.kawancurhat.presentation.home_page.components
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,16 +34,17 @@ fun MoodItem(
     val context = LocalContext.current
 
     Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = modifier.padding(horizontal = 4.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        IconButton(onClick = {
+        Button(onClick = {
             Toast.makeText(
                 context,
                 "Not yet",
                 Toast.LENGTH_SHORT
             ).show()
-        }) {
+        }, modifier = Modifier.size(50.dp)
+        ) {
             Image(
                 painter = painterResource(mood.imageMood),
                 contentDescription = null,

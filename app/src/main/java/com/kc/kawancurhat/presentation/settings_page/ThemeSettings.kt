@@ -40,7 +40,7 @@ fun ThemeSettings(
     Scaffold(topBar = {
         TopAppBar(
             title = {
-                Text(text = stringResource(R.string.language_settings))
+                Text(text = stringResource(R.string.theme_settings))
             },
             navigationIcon = {
                 IconButton(onClick = { onBackPressed() }) {

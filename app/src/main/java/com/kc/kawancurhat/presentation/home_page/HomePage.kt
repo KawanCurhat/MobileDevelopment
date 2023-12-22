@@ -39,7 +39,7 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.kc.kawancurhat.R
 import com.kc.kawancurhat.presentation.article.ArticlePage
-import com.kc.kawancurhat.presentation.chatbot.ChatBot
+import com.kc.kawancurhat.presentation.chatbot.ChatBotPage
 import com.kc.kawancurhat.presentation.gmap.MapPage
 import com.kc.kawancurhat.presentation.home_page.components.MenuItem
 import com.kc.kawancurhat.presentation.home_page.components.MoodItem
@@ -137,7 +137,7 @@ fun HomePage(
 
                             LazyRow(
                                 horizontalArrangement = Arrangement.SpaceBetween,
-                                contentPadding = PaddingValues(horizontal = 16.dp),
+                                contentPadding = PaddingValues(horizontal = 8.dp),
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 items(dummyMood, key = { it.textMood }) { mood ->
@@ -180,7 +180,7 @@ fun HomePage(
         }
 
         composable("Chat") {
-            ChatBot(
+            ChatBotPage(
                 navController
             )
         }

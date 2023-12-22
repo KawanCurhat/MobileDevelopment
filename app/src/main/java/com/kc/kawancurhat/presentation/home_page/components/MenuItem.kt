@@ -99,7 +99,7 @@ fun MenuItem(
                         .size(20.dp),
                 )
                 Text(
-                    text = stringResource(R.string.journal_txt),
+                    text = stringResource(R.string.article_txt),
                     fontFamily = fontPoppinsBold,
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp,
